@@ -1,18 +1,19 @@
-# Administratoraccount aktivieren
+# Activate Administrator account
 Enable-LocalUser -Name "Administrator"
 
-# Passwort für den Administratoraccount festlegen
-$Password = Read-Host -AsSecureString -Prompt "Geben Sie das Administratorpasswort ein:"
+# Set password for the Administrator account
+$Password = Read-Host -AsSecureString -Prompt "Enter the Administrator password:"
 Set-LocalUser -Name "Administrator" -Password $Password
 
-# Überprüfen, ob der Registrierungsschlüssel existiert, und ihn ggf. erstellen
+# Check if the registry key exists, and create it if necessary
 $Path = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList"
-if (!(Test-Path $Path)) {
+ if (!(Test-Path $Path)) {
     New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts" -Name "UserList" -ItemType Directory -Force
 }
 
-# Administratoraccount vor der Anmeldung verbergen
+# Hide the Administrator account from the login screen
 New-ItemProperty -Path $Path -Name "Administrator" -Value 0 -PropertyType DWORD -Force
 
-# Skriptende Positive
-Write-Host "Der Administratoraccount wurde aktiviert, das Passwort wurde festgelegt und der Account wurde vor der Anmeldung verborgen."
+# Script end Positive
+Write-Host "The Administrator account has been activated, the password has been set, and the account has been hidden from the login screen."
+ 
