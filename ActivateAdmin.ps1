@@ -14,5 +14,5 @@ if (!(Test-Path $Path)) {
 # Administratoraccount vor der Anmeldung verbergen
 New-ItemProperty -Path $Path -Name "Administrator" -Value 0 -PropertyType DWORD -Force
 
-# Skriptende
+# Skriptende Positive
 Write-Host "Der Administratoraccount wurde aktiviert, das Passwort wurde festgelegt und der Account wurde vor der Anmeldung verborgen."
