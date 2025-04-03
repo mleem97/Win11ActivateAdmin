@@ -1,4 +1,4 @@
-# WIn11ActivateAdmin
+# Win11ActivateAdmin
 
 A quick and dirty PowerShell script that activates the "Administrator" account on your Windows 11 device.
 
